@@ -1,15 +1,16 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavbarComponent from "./components/NavbarComponent";
-import { Home, Success } from "./pages/Index";
+import { About, Home, Success } from "./pages/Index";
 
 const App = () => {
   return (
     <div>
-      <NavbarComponent />
       <BrowserRouter>
+        <NavbarComponent />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/success" component={Success} />
+          <Route path="/about" component={About} />
         </Switch>
       </BrowserRouter>
     </div>
