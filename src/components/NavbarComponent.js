@@ -1,4 +1,4 @@
-import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 
 const NavbarComponent = (props) => {
@@ -30,6 +30,20 @@ const NavbarComponent = (props) => {
               className={props.location.pathname === "/about" && "active"}
             >
               about
+            </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/redux"
+              className={props.location.pathname === "/redux" && "active"}
+            >
+              Redux
+            </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/redux2"
+              className={props.location.pathname === "/redux2" && "active"}
+            >
+              Redux 2
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

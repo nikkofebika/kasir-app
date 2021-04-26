@@ -4,12 +4,40 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
+let initialState = {
+  totalOrder: 24
+}
+// Reducer
+const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "PLUS_ORDER":
+      return {
+        ...state,
+        totalOrder: state.totalOrder + 1
+      }
+      break;
+    case "MINUS_ORDER":
+      return {
+        ...state,
+        totalOrder: state.totalOrder - 1
+      }
+      break;
+    default:
+      return state
+      break;
+  }
+}
+
+// Store
+const storeRedux = createStore(rootReducer)
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={storeRedux}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

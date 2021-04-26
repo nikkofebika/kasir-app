@@ -21,7 +21,7 @@ export default class Success extends Component {
     return (
       <center className="mt-5">
         <h3>Terimakasih sudah belanja :)</h3>
-        <img src="assets/images/success_thanks.svg" width="300" />
+        <img src="assets/images/success_thanks.svg" width="300" alt="image ku" />
         <br />
         <br />
         <Button variant="primary" as={Link} to="/">
