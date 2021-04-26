@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
-import { Button, Card, Col, Row } from 'react-bootstrap'
+import { Card, Col, Row } from 'react-bootstrap'
+import { connect } from 'react-redux';
 import Counter from "../components/Counter";
 
-export default class Redux extends Component {
-    constructor(props) {
-        super(props)
+class Redux extends Component {
+    // constructor(props) {
+    //     super(props)
 
-        this.state = {
-            order: 0
-        }
-    }
+    //     this.state = {
+    //         order: 0
+    //     }
+    // }
 
-    handleChangeOrder = (newValue) => {
-        this.setState({
-            order: newValue
-        })
-    }
+    // handleChangeOrder = (newValue) => {
+    //     this.setState({
+    //         order: newValue
+    //     })
+    // }
 
     render() {
         return (
@@ -24,9 +25,10 @@ export default class Redux extends Component {
                     <center>
                         <Card style={{ width: '18rem' }}>
                             <div className="p-3" style={{ backgroundColor: 'aqua' }}>
-                                <strong>{this.state.order}</strong>
+                                <strong>{this.props.order}</strong>
                             </div>
-                            <Counter order={this.state.order} handleChangeOrder={(newValue)=>this.handleChangeOrder(newValue)} />
+                            {/* <Counter order={this.state.order} handleChangeOrder={(newValue)=>this.handleChangeOrder(newValue)} /> */}
+                            <Counter />
                         </Card>
                     </center>
                 </Col>
@@ -34,3 +36,10 @@ export default class Redux extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        order: state.totalOrder
+    }
+}
+export default connect(mapStateToProps)(Redux)

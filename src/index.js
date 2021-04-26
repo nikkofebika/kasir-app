@@ -1,44 +1,54 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 
 let initialState = {
-  totalOrder: 24
-}
+  totalOrder: 0,
+};
 // Reducer
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "CHANGE_ORDER":
+      return {
+        ...state,
+        totalOrder: action.newValue,
+      };
+      break;
     case "PLUS_ORDER":
       return {
         ...state,
-        totalOrder: state.totalOrder + 1
-      }
+        totalOrder: state.totalOrder + 1,
+      };
       break;
     case "MINUS_ORDER":
+      let totalOrder = 0;
+      if (state.totalOrder > 0) {
+        totalOrder = state.totalOrder - 1;
+      }
       return {
         ...state,
-        totalOrder: state.totalOrder - 1
-      }
+        totalOrder: totalOrder,
+      };
       break;
     default:
-      return state
+      return state;
       break;
   }
-}
+};
 
 // Store
-const storeRedux = createStore(rootReducer)
+const storeRedux = createStore(rootReducer);
 
 ReactDOM.render(
   <Provider store={storeRedux}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class Redux2 extends Component {
+class Redux2 extends Component {
     render() {
         return (
             <div>
-                <h1>Jumlah COunter : 0</h1>
+                <h1>Jumlah COunter : {this.props.order}</h1>
             </div>
         )
     }
 }
+const mapStateToProps = (state) => {
+    return{order: state.totalOrder}
+}
+export default connect(mapStateToProps)(Redux2)
