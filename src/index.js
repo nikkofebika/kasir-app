@@ -4,50 +4,22 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-
-let initialState = {
-  totalOrder: 0,
-};
-// Reducer
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "CHANGE_ORDER":
-      return {
-        ...state,
-        totalOrder: action.newValue,
-      };
-      break;
-    case "PLUS_ORDER":
-      return {
-        ...state,
-        totalOrder: state.totalOrder + 1,
-      };
-      break;
-    case "MINUS_ORDER":
-      let totalOrder = 0;
-      if (state.totalOrder > 0) {
-        totalOrder = state.totalOrder - 1;
-      }
-      return {
-        ...state,
-        totalOrder: totalOrder,
-      };
-      break;
-    default:
-      return state;
-      break;
-  }
-};
+// import { createStore } from "redux";
+// import { Provider } from "react-redux";
+// import { GlobalReducer } from "./redux/reducers/GlobalReducer";
 
 // Store
-const storeRedux = createStore(rootReducer);
+// const storeRedux = createStore(GlobalReducer);
+
+// ReactDOM.render(
+//   <Provider store={storeRedux}>
+//     <App />
+//   </Provider>,
+//   document.getElementById("root")
+// );
 
 ReactDOM.render(
-  <Provider store={storeRedux}>
-    <App />
-  </Provider>,
+  <App />,
   document.getElementById("root")
 );
 
